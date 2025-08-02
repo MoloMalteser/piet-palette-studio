@@ -26,7 +26,7 @@ export const PietCanvas = ({
       Array(gridSize).fill('white')
     );
   });
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(3); // Default 3x3 pixel zoom as requested
   const [isDragging, setIsDragging] = useState(false);
   const canvasRef = useRef<HTMLDivElement>(null);
 
@@ -41,12 +41,15 @@ export const PietCanvas = ({
     }
   }, [gridSize, initialGrid]);
 
-  // Call onCanvasChange when grid updates - use callback to avoid infinite loops
+  // Call onCanvasChange when grid updates - prevent infinite loops
+  const lastGridRef = useRef<string>();
   useEffect(() => {
-    if (onCanvasChange) {
+    const gridString = JSON.stringify(grid);
+    if (onCanvasChange && gridString !== lastGridRef.current) {
+      lastGridRef.current = gridString;
       onCanvasChange(grid);
     }
-  }, [grid]);
+  }, [grid, onCanvasChange]);
 
   const handleCellClick = (row: number, col: number) => {
     const newGrid = [...grid];

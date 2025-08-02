@@ -54,6 +54,12 @@ export const translations = {
     'runner.programLoaded': 'Program loaded from canvas',
     'runner.testProgram': 'Test program loaded',
     'runner.noProgram': 'No program loaded',
+    'runner.step': 'Step',
+    'runner.pause': 'Pause',
+    'runner.resume': 'Resume',
+    'runner.reset': 'Reset',
+    'runner.export': 'Export',
+    'runner.githubExport': 'GitHub Export',
     
     // Gallery  
     'gallery.title': 'Gallery',
@@ -164,6 +170,12 @@ export const translations = {
     'runner.programLoaded': 'Programm vom Canvas geladen',
     'runner.testProgram': 'Testprogramm geladen',
     'runner.noProgram': 'Kein Programm geladen',
+    'runner.step': 'Schritt',
+    'runner.pause': 'Pause',
+    'runner.resume': 'Fortsetzen',
+    'runner.reset': 'Zurücksetzen',
+    'runner.export': 'Exportieren',
+    'runner.githubExport': 'GitHub Export',
     
     // Gallery
     'gallery.title': 'Galerie',
