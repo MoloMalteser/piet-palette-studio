@@ -100,159 +100,94 @@ const CodeRunner = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="px-6 py-6 space-y-6">
       {/* Header */}
-      <div className="text-center space-y-3 animate-fade-up">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-          Piet Code Runner
-        </h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Execute your Piet programs and see them in action
-        </p>
+      <div className="text-center space-y-2">
+        <h1 className="text-2xl font-bold">Runner</h1>
+        <p className="text-sm text-muted-foreground">Execute your programs</p>
       </div>
 
-      <div className="grid lg:grid-cols-[1fr_1fr] gap-6">
-        {/* Left Panel - Program & Input */}
-        <div className="space-y-6 animate-slide-up">
-          {/* Program Status */}
-          <Card className="rounded-3xl shadow-ios-2 border-border bg-ios-surface1">
-            <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="w-5 h-5" />
-                Program Status
-              </CardTitle>
-              <CardDescription>
-                Load and manage your Piet programs
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {program ? (
-                <div className="space-y-3">
-                  <Badge variant="secondary" className="rounded-full">
-                    <Zap className="w-3 h-3 mr-1" />
-                    Program Loaded
-                  </Badge>
-                  <div className="text-sm space-y-1">
-                    <p><span className="font-medium">Size:</span> {program.width}×{program.height}</p>
-                    <p><span className="font-medium">Total pixels:</span> {program.width * program.height}</p>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  <Badge variant="outline" className="rounded-full">
-                    <AlertCircle className="w-3 h-3 mr-1" />
-                    No Program Loaded
-                  </Badge>
-                  <p className="text-sm text-muted-foreground">
-                    Create a program in the Editor first, then load it here.
-                  </p>
-                </div>
-              )}
-              
-              <Button 
-                onClick={loadProgram}
-                className="w-full rounded-2xl"
-                variant="outline"
-              >
-                <Upload className="w-4 h-4 mr-2" />
-                Load Program from Editor
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Input */}
-          <Card className="rounded-3xl shadow-ios-2 border-border bg-ios-surface1">
-            <CardHeader className="pb-4">
-              <CardTitle>Program Input</CardTitle>
-              <CardDescription>
-                Provide input for your Piet program
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <Textarea
-                placeholder="Enter numbers or text for your program..."
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="rounded-2xl min-h-[100px] resize-none"
-              />
-              
-              <Button 
-                onClick={runProgram}
-                disabled={!program || isRunning}
-                className="w-full rounded-2xl"
-                size="lg"
-              >
-                <Play className="w-4 h-4 mr-2" />
-                {isRunning ? "Running..." : "Run Program"}
-              </Button>
-            </CardContent>
-          </Card>
+      {/* Program Status */}
+      <div className="bg-card border border-border rounded-3xl p-4 space-y-4">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold">Program Status</h3>
+          {program ? (
+            <Badge className="rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+              Loaded
+            </Badge>
+          ) : (
+            <Badge variant="outline" className="rounded-full">
+              Not Loaded
+            </Badge>
+          )}
         </div>
+        
+        {program && (
+          <div className="text-sm text-muted-foreground">
+            Size: {program.width}×{program.height} pixels
+          </div>
+        )}
+        
+        <Button 
+          onClick={loadProgram}
+          className="w-full rounded-2xl"
+          variant="outline"
+        >
+          <Upload className="w-4 h-4 mr-2" />
+          Load from Editor
+        </Button>
+      </div>
 
-        {/* Right Panel - Execution & Output */}
-        <div className="space-y-6 animate-slide-up">
-          {/* Execution Steps */}
-          <Card className="rounded-3xl shadow-ios-2 border-border bg-ios-surface1">
-            <CardHeader className="pb-4">
-              <CardTitle>Execution Steps</CardTitle>
-              <CardDescription>
-                Watch your program execute step by step
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2 max-h-[200px] overflow-y-auto">
-                {executionSteps.length > 0 ? (
-                  executionSteps.map((step, index) => (
-                    <div 
-                      key={index}
-                      className="text-sm p-3 rounded-2xl bg-ios-surface2 border animate-fade-up"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      {step}
-                    </div>
-                  ))
-                ) : (
-                  <div className="text-center text-muted-foreground py-8">
-                    <Zap className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                    <p>Execution steps will appear here</p>
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+      {/* Input */}
+      <div className="bg-card border border-border rounded-3xl p-4 space-y-4">
+        <h3 className="font-semibold">Input</h3>
+        <Textarea
+          placeholder="Enter input for your program..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="rounded-2xl min-h-[80px] resize-none"
+        />
+      </div>
 
-          {/* Output */}
-          <Card className="rounded-3xl shadow-ios-2 border-border bg-ios-surface1">
-            <CardHeader className="pb-4">
-              <CardTitle>Program Output</CardTitle>
-              <CardDescription>
-                Results from your Piet program execution
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="min-h-[120px] p-4 rounded-2xl bg-ios-surface2 border font-mono text-sm">
-                  {output || (
-                    <div className="text-center text-muted-foreground py-8">
-                      <FileText className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                      <p>Program output will appear here</p>
-                    </div>
-                  )}
-                </div>
-                
-                {output && (
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>Output length: {output.length} characters</span>
-                    <Badge variant="secondary" className="rounded-full">
-                      Execution Complete
-                    </Badge>
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+      {/* Run Button */}
+      <Button 
+        onClick={runProgram}
+        disabled={!program || isRunning}
+        className="w-full rounded-2xl"
+        size="lg"
+      >
+        <Play className="w-4 h-4 mr-2" />
+        {isRunning ? "Running..." : "Run Program"}
+      </Button>
+
+      {/* Output */}
+      <div className="bg-card border border-border rounded-3xl p-4 space-y-4">
+        <h3 className="font-semibold">Output</h3>
+        <div className="min-h-[100px] p-3 rounded-2xl bg-muted border font-mono text-sm">
+          {output || (
+            <div className="text-center text-muted-foreground py-6">
+              Output will appear here
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Execution Steps */}
+      {executionSteps.length > 0 && (
+        <div className="bg-card border border-border rounded-3xl p-4 space-y-4">
+          <h3 className="font-semibold">Execution Steps</h3>
+          <div className="space-y-2 max-h-40 overflow-y-auto">
+            {executionSteps.map((step, index) => (
+              <div 
+                key={index}
+                className="text-xs p-2 rounded-xl bg-muted"
+              >
+                {step}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

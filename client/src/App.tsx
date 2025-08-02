@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Router, Route, Switch } from "wouter";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { LanguageProvider } from "@/hooks/useLanguage";
-import Navigation from "@/components/Navigation";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import Index from "./pages/Index";
 import PietEditor from "./pages/PietEditor";
 import CodeRunner from "./pages/CodeRunner";
@@ -24,8 +24,8 @@ const App = () => (
           <Sonner />
           <div className="min-h-screen bg-background">
             <Router>
-              <Navigation />
-              <main className="max-w-7xl mx-auto p-6">
+              {/* Mobile-first content with bottom navigation */}
+              <main className="pb-20">
                 <Switch>
                   <Route path="/" component={Index} />
                   <Route path="/editor" component={PietEditor} />
@@ -36,6 +36,7 @@ const App = () => (
                   <Route path="*" component={NotFound} />
                 </Switch>
               </main>
+              <MobileBottomNav />
             </Router>
           </div>
         </TooltipProvider>

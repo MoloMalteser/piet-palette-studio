@@ -94,139 +94,42 @@ const Gallery = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="px-6 py-6 space-y-6">
       {/* Header */}
-      <div className="text-center space-y-3 animate-fade-up">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-          Program Gallery
-        </h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Explore example Piet programs and learn from interactive samples
-        </p>
+      <div className="text-center space-y-2">
+        <h1 className="text-2xl font-bold">Gallery</h1>
+        <p className="text-sm text-muted-foreground">Explore example programs</p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-scale-in">
-        <Card className="rounded-3xl shadow-ios-1 border-border bg-ios-surface1 text-center p-4">
-          <div className="text-2xl font-bold text-primary">{examples.length}</div>
-          <div className="text-sm text-muted-foreground">Examples</div>
-        </Card>
-        <Card className="rounded-3xl shadow-ios-1 border-border bg-ios-surface1 text-center p-4">
-          <div className="text-2xl font-bold text-accent">3</div>
-          <div className="text-sm text-muted-foreground">Difficulties</div>
-        </Card>
-        <Card className="rounded-3xl shadow-ios-1 border-border bg-ios-surface1 text-center p-4">
-          <div className="text-2xl font-bold text-green-500">20</div>
-          <div className="text-sm text-muted-foreground">Colors Used</div>
-        </Card>
-        <Card className="rounded-3xl shadow-ios-1 border-border bg-ios-surface1 text-center p-4">
-          <div className="text-2xl font-bold text-purple-500">∞</div>
-          <div className="text-sm text-muted-foreground">Possibilities</div>
-        </Card>
-      </div>
-
-      {/* Examples Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up">
-        {examples.map((example, index) => (
-          <Card 
+      {/* Examples List */}
+      <div className="space-y-3">
+        {examples.map((example) => (
+          <div 
             key={example.id} 
-            className="rounded-3xl shadow-ios-2 border-border bg-ios-surface1 hover:shadow-ios-3 transition-all duration-300 group"
-            style={{ animationDelay: `${index * 0.1}s` }}
+            className="bg-card border border-border rounded-3xl p-4 active:scale-95 transition-transform duration-150"
+            onClick={() => loadExample(example)}
           >
-            <CardHeader className="pb-4">
-              <div className="flex items-start justify-between">
-                <div className="space-y-2">
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                    {example.name}
-                  </CardTitle>
-                  <Badge 
-                    className={`rounded-full text-xs ${getComplexityColor(example.complexity)}`}
-                  >
-                    {example.complexity}
-                  </Badge>
-                </div>
-                <div className="text-4xl">{example.preview}</div>
-              </div>
-            </CardHeader>
-            
-            <CardContent className="space-y-4">
-              <CardDescription className="text-sm leading-relaxed">
-                {example.description}
-              </CardDescription>
-              
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-sm">
-                  <Palette className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Size:</span>
-                  <span className="font-medium">{example.size}</span>
-                </div>
-                
-                <div className="flex items-center gap-2 text-sm">
-                  <Code className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Colors:</span>
-                  <span className="font-medium">{example.colors.length}</span>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="text-2xl">{example.preview}</div>
+                <div className="space-y-1">
+                  <div className="font-semibold text-sm">{example.name}</div>
+                  <div className="text-xs text-muted-foreground">{example.size}</div>
                 </div>
               </div>
-
-              <div className="flex gap-2 pt-2">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex-1 rounded-xl"
-                      onClick={() => setSelectedExample(example)}
-                    >
-                      <Eye className="w-4 h-4 mr-1" />
-                      Preview
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-2xl rounded-3xl">
-                    <DialogHeader>
-                      <DialogTitle className="flex items-center gap-2">
-                        <Sparkles className="w-5 h-5" />
-                        {selectedExample?.name}
-                      </DialogTitle>
-                      <DialogDescription>
-                        {selectedExample?.description}
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      <div className="aspect-video bg-ios-surface2 rounded-2xl flex items-center justify-center border">
-                        <div className="text-center space-y-2">
-                          <div className="text-6xl">{selectedExample?.preview}</div>
-                          <p className="text-sm text-muted-foreground">
-                            Piet Program Preview
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            Size: {selectedExample?.size} • Colors: {selectedExample?.colors.length}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex gap-2">
-                        <Button 
-                          onClick={() => selectedExample && loadExample(selectedExample)}
-                          className="flex-1 rounded-xl"
-                        >
-                          <Download className="w-4 h-4 mr-2" />
-                          Load in Editor
-                        </Button>
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-                
-                <Button 
-                  size="sm" 
-                  className="flex-1 rounded-xl"
-                  onClick={() => loadExample(example)}
+              <div className="flex items-center space-x-2">
+                <Badge 
+                  className={`rounded-full text-xs ${getComplexityColor(example.complexity)}`}
                 >
-                  <Download className="w-4 h-4 mr-1" />
-                  Load
-                </Button>
+                  {example.complexity}
+                </Badge>
+                <Download className="w-4 h-4 text-muted-foreground" />
               </div>
-            </CardContent>
-          </Card>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+              {example.description}
+            </p>
+          </div>
         ))}
       </div>
     </div>

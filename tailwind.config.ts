@@ -61,11 +61,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // iOS Design System
-        "ios-surface1": "hsl(var(--ios-surface-1))",
-        "ios-surface2": "hsl(var(--ios-surface-2))",
-        "ios-surface3": "hsl(var(--ios-surface-3))",
+        // iOS Design System - Clean Mobile
+        "ios-surface": "hsl(var(--ios-surface))",
+        "ios-surface-elevated": "hsl(var(--ios-surface-elevated))",
         "ios-glass": "hsl(var(--ios-glass))",
+        "ios-divider": "hsl(var(--ios-divider))",
         // Piet Colors
         "piet-red": "hsl(var(--piet-red))",
         "piet-yellow": "hsl(var(--piet-yellow))",
