@@ -11,6 +11,7 @@ import PietEditor from "./pages/PietEditor";
 import CodeRunner from "./pages/CodeRunner";
 import Gallery from "./pages/Gallery";
 import Settings from "./pages/Settings";
+import Documentation from "./pages/Documentation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
                   <Route path="/runner" component={CodeRunner} />
                   <Route path="/gallery" component={Gallery} />
                   <Route path="/settings" component={Settings} />
+                  <Route path="/docs" component={Documentation} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" component={NotFound} />
                 </Switch>

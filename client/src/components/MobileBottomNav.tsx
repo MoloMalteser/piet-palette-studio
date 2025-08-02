@@ -14,17 +14,12 @@ const MobileBottomNav = () => {
   const navItems = [
     {
       href: "/",
-      label: "Home",
-      icon: Home
-    },
-    {
-      href: "/editor",
-      label: "Editor",
+      label: "Canvas",
       icon: Palette
     },
     {
       href: "/runner",
-      label: "Runner",
+      label: "Run",
       icon: Play
     },
     {
@@ -33,8 +28,8 @@ const MobileBottomNav = () => {
       icon: Image
     },
     {
-      href: "/settings",
-      label: "Settings",
+      href: "/docs",
+      label: "Docs",
       icon: Settings
     }
   ];

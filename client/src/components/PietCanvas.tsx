@@ -31,19 +31,21 @@ export const PIET_COLORS: PietColor[] = [
 ];
 
 interface PietCanvasProps {
-  selectedColor: PietColor;
-  onCellClick?: (row: number, col: number, color: PietColor) => void;
+  selectedColor: string;
+  activeTool: string;
   gridSize?: number;
+  className?: string;
 }
 
 export const PietCanvas = ({ 
   selectedColor, 
-  onCellClick,
-  gridSize = 20 
+  activeTool,
+  gridSize = 20,
+  className 
 }: PietCanvasProps) => {
-  const [grid, setGrid] = useState<PietColor[][]>(
+  const [grid, setGrid] = useState<string[][]>(
     Array(gridSize).fill(null).map(() => 
-      Array(gridSize).fill(PIET_COLORS.find(c => c.name === "White"))
+      Array(gridSize).fill('white')
     )
   );
   
@@ -51,44 +53,19 @@ export const PietCanvas = ({
 
   const handleCellClick = (row: number, col: number) => {
     const newGrid = [...grid];
-    newGrid[row][col] = selectedColor;
-    setGrid(newGrid);
-    onCellClick?.(row, col, selectedColor);
-  };
-
-  const clearCanvas = () => {
-    const whiteColor = PIET_COLORS.find(c => c.name === "White")!;
-    setGrid(Array(gridSize).fill(null).map(() => 
-      Array(gridSize).fill(whiteColor)
-    ));
-  };
-
-  const exportToPNG = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d')!;
-    const cellSize = 20;
-    
-    canvas.width = gridSize * cellSize;
-    canvas.height = gridSize * cellSize;
-    
-    for (let row = 0; row < gridSize; row++) {
-      for (let col = 0; col < gridSize; col++) {
-        ctx.fillStyle = grid[row][col].color;
-        ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
-      }
+    if (activeTool === 'eraser') {
+      newGrid[row][col] = 'white';
+    } else {
+      newGrid[row][col] = selectedColor;
     }
-    
-    const link = document.createElement('a');
-    link.download = `piet-program-${Date.now()}.png`;
-    link.href = canvas.toDataURL();
-    link.click();
+    setGrid(newGrid);
   };
 
-  return {
-    canvas: (
+  return (
+    <div className={cn("w-full h-full flex items-center justify-center", className)}>
       <div 
         ref={canvasRef}
-        className="grid gap-0 p-4 bg-canvas-background rounded-2xl shadow-canvas border border-border"
+        className="grid gap-[1px] p-4 bg-muted rounded-2xl border border-border max-w-sm max-h-sm"
         style={{ 
           gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
           aspectRatio: '1'
@@ -99,22 +76,19 @@ export const PietCanvas = ({
             <button
               key={`${rowIndex}-${colIndex}`}
               className={cn(
-                "aspect-square border border-canvas-grid hover:scale-110 transition-all duration-150",
-                "touch-manipulation",
-                cell.className,
-                rowIndex === 0 && colIndex === 0 && "rounded-tl-xl",
-                rowIndex === 0 && colIndex === gridSize - 1 && "rounded-tr-xl",
-                rowIndex === gridSize - 1 && colIndex === 0 && "rounded-bl-xl",
-                rowIndex === gridSize - 1 && colIndex === gridSize - 1 && "rounded-br-xl"
+                "aspect-square border-0 hover:scale-110 transition-all duration-150 touch-manipulation",
+                rowIndex === 0 && colIndex === 0 && "rounded-tl-lg",
+                rowIndex === 0 && colIndex === gridSize - 1 && "rounded-tr-lg",
+                rowIndex === gridSize - 1 && colIndex === 0 && "rounded-bl-lg",
+                rowIndex === gridSize - 1 && colIndex === gridSize - 1 && "rounded-br-lg"
               )}
+              style={{ backgroundColor: `hsl(var(--piet-${cell}))` }}
               onClick={() => handleCellClick(rowIndex, colIndex)}
-              aria-label={`Cell ${rowIndex},${colIndex} - ${cell.name}`}
+              aria-label={`Cell ${rowIndex},${colIndex} - ${cell}`}
             />
           ))
         )}
       </div>
-    ),
-    clearCanvas,
-    exportToPNG
-  };
+    </div>
+  );
 };

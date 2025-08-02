@@ -23,17 +23,30 @@ const CodeRunner = () => {
   const [executionSteps, setExecutionSteps] = useState<string[]>([]);
 
   const loadProgram = () => {
-    try {
-      const saved = localStorage.getItem('piet-program');
-      if (saved) {
-        const parsedProgram = JSON.parse(saved);
-        setProgram(parsedProgram);
-        toast.success("Program loaded successfully!");
-      } else {
-        toast.error("No saved program found. Create one in the Editor first.");
+    // Load program from localStorage (saved from main canvas)
+    const savedProgram = localStorage.getItem('currentProgram');
+    if (savedProgram) {
+      try {
+        const program = JSON.parse(savedProgram);
+        setProgram(program);
+        toast.success("Program loaded from canvas");
+      } catch (error) {
+        toast.error("Failed to load program");
       }
-    } catch (error) {
-      toast.error("Failed to load program.");
+    } else {
+      // Create a simple test program if none exists
+      const testProgram = {
+        width: 3,
+        height: 3,
+        grid: [
+          ['red', 'yellow', 'green'],
+          ['cyan', 'blue', 'magenta'], 
+          ['white', 'black', 'red']
+        ]
+      };
+      
+      setProgram(testProgram);
+      toast.success("Test program loaded");
     }
   };
 
