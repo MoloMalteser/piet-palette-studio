@@ -61,7 +61,40 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				piet: {
+					red: 'hsl(var(--piet-red))',
+					yellow: 'hsl(var(--piet-yellow))',
+					green: 'hsl(var(--piet-green))',
+					cyan: 'hsl(var(--piet-cyan))',
+					blue: 'hsl(var(--piet-blue))',
+					magenta: 'hsl(var(--piet-magenta))',
+					black: 'hsl(var(--piet-black))',
+					white: 'hsl(var(--piet-white))',
+					'light-red': 'hsl(var(--piet-light-red))',
+					'light-yellow': 'hsl(var(--piet-light-yellow))',
+					'light-green': 'hsl(var(--piet-light-green))',
+					'light-cyan': 'hsl(var(--piet-light-cyan))',
+					'light-blue': 'hsl(var(--piet-light-blue))',
+					'light-magenta': 'hsl(var(--piet-light-magenta))',
+					'dark-red': 'hsl(var(--piet-dark-red))',
+					'dark-yellow': 'hsl(var(--piet-dark-yellow))',
+					'dark-green': 'hsl(var(--piet-dark-green))',
+					'dark-cyan': 'hsl(var(--piet-dark-cyan))',
+					'dark-blue': 'hsl(var(--piet-dark-blue))',
+					'dark-magenta': 'hsl(var(--piet-dark-magenta))'
+				},
+				canvas: {
+					background: 'hsl(var(--canvas-background))',
+					grid: 'hsl(var(--grid-line))'
 				}
+			},
+			boxShadow: {
+				'canvas': 'var(--canvas-shadow)'
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)',
+				'spring': 'var(--transition-spring)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
