@@ -1,60 +1,121 @@
+import { Button } from "@/components/ui/button";
+import { 
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { PIET_COLORS, PietColor } from "./AdvancedPietCanvas";
 import { useLanguage } from "@/hooks/useLanguage";
 
 interface ColorPaletteProps {
-  selectedColor: PietColor;
-  onColorSelect: (color: PietColor) => void;
+  selectedColor: string;
+  onColorSelect: (color: string) => void;
 }
+
+const PIET_COLORS = {
+  normal: ['red', 'yellow', 'green', 'cyan', 'blue', 'magenta'],
+  light: ['light-red', 'light-yellow', 'light-green', 'light-cyan', 'light-blue', 'light-magenta'],
+  dark: ['dark-red', 'dark-yellow', 'dark-green', 'dark-cyan', 'dark-blue', 'dark-magenta'],
+  special: ['white', 'black']
+};
 
 export const ColorPalette = ({ selectedColor, onColorSelect }: ColorPaletteProps) => {
   const { t } = useLanguage();
-  
+
   return (
-    <div className="space-y-6">
-      <div className="space-y-2">
-        <h3 className="text-lg font-semibold">{t('colors.title')}</h3>
-        <p className="text-sm text-muted-foreground">
-          Select from the 20 standard Piet colors
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-4 gap-3">
-        {PIET_COLORS.map((color) => (
-          <button
-            key={color.name}
-            className={cn(
-              "relative aspect-square rounded-2xl border-2 transition-all duration-300",
-              "hover:scale-105 active:scale-95 hover:shadow-ios-2",
-              "touch-manipulation",
-              selectedColor.name === color.name 
-                ? "border-primary ring-2 ring-primary/30 ring-offset-2 ring-offset-background scale-105 shadow-ios-2" 
-                : "border-border hover:border-primary/50"
-            )}
-            style={{ backgroundColor: color.color }}
-            onClick={() => onColorSelect(color)}
-            aria-label={`Select ${color.name}`}
-            title={color.name}
-          >
-            {selectedColor.name === color.name && (
-              <div className="absolute inset-0 rounded-2xl bg-white/20 dark:bg-black/20 flex items-center justify-center">
-                <div className="w-3 h-3 bg-white dark:bg-black rounded-full shadow-lg" />
-              </div>
-            )}
-          </button>
-        ))}
-      </div>
-      
-      <div className="p-4 rounded-2xl bg-ios-surface2 border space-y-2">
-        <div className="text-sm font-medium">{t('colors.selected')}</div>
-        <div className="flex items-center gap-3">
-          <div 
-            className="w-8 h-8 rounded-xl border-2 border-border shadow-ios-1"
-            style={{ backgroundColor: selectedColor.color }}
-          />
-          <span className="font-medium text-sm">{selectedColor.name}</span>
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className="w-12 h-12 rounded-full border-2 border-border shadow-lg p-0"
+          style={{ backgroundColor: `hsl(var(--piet-${selectedColor}))` }}
+        />
+      </PopoverTrigger>
+      <PopoverContent className="w-72 p-4 rounded-3xl" align="start">
+        <div className="space-y-4">
+          <h4 className="font-semibold text-sm">{t('docs.colorPalette')}</h4>
+          
+          {/* Light Colors */}
+          <div className="space-y-2">
+            <h5 className="text-xs font-medium text-muted-foreground">{t('docs.lightColors')}</h5>
+            <div className="grid grid-cols-6 gap-2">
+              {PIET_COLORS.light.map((color) => (
+                <button
+                  key={color}
+                  className={cn(
+                    "w-8 h-8 rounded-xl border-2 transition-all duration-150",
+                    selectedColor === color 
+                      ? "border-foreground scale-110 shadow-lg" 
+                      : "border-border hover:scale-105"
+                  )}
+                  style={{ backgroundColor: `hsl(var(--piet-${color}))` }}
+                  onClick={() => onColorSelect(color)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Normal Colors */}
+          <div className="space-y-2">
+            <h5 className="text-xs font-medium text-muted-foreground">{t('docs.normalColors')}</h5>
+            <div className="grid grid-cols-6 gap-2">
+              {PIET_COLORS.normal.map((color) => (
+                <button
+                  key={color}
+                  className={cn(
+                    "w-8 h-8 rounded-xl border-2 transition-all duration-150",
+                    selectedColor === color 
+                      ? "border-foreground scale-110 shadow-lg" 
+                      : "border-border hover:scale-105"
+                  )}
+                  style={{ backgroundColor: `hsl(var(--piet-${color}))` }}
+                  onClick={() => onColorSelect(color)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Dark Colors */}
+          <div className="space-y-2">
+            <h5 className="text-xs font-medium text-muted-foreground">{t('docs.darkColors')}</h5>
+            <div className="grid grid-cols-6 gap-2">
+              {PIET_COLORS.dark.map((color) => (
+                <button
+                  key={color}
+                  className={cn(
+                    "w-8 h-8 rounded-xl border-2 transition-all duration-150",
+                    selectedColor === color 
+                      ? "border-foreground scale-110 shadow-lg" 
+                      : "border-border hover:scale-105"
+                  )}
+                  style={{ backgroundColor: `hsl(var(--piet-${color}))` }}
+                  onClick={() => onColorSelect(color)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Special Colors */}
+          <div className="space-y-2">
+            <h5 className="text-xs font-medium text-muted-foreground">{t('docs.specialColors')}</h5>
+            <div className="grid grid-cols-2 gap-2">
+              {PIET_COLORS.special.map((color) => (
+                <button
+                  key={color}
+                  className={cn(
+                    "w-8 h-8 rounded-xl border-2 transition-all duration-150",
+                    selectedColor === color 
+                      ? "border-foreground scale-110 shadow-lg" 
+                      : "border-border hover:scale-105"
+                  )}
+                  style={{ backgroundColor: `hsl(var(--piet-${color}))` }}
+                  onClick={() => onColorSelect(color)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </PopoverContent>
+    </Popover>
   );
 };

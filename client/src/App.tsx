@@ -12,6 +12,7 @@ import CodeRunner from "./pages/CodeRunner";
 import Gallery from "./pages/Gallery";
 import Settings from "./pages/Settings";
 import Documentation from "./pages/Documentation";
+import Welcome from "./pages/Welcome";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
               <main className="pb-20">
                 <Switch>
                   <Route path="/" component={Index} />
+                  <Route path="/welcome" component={Welcome} />
                   <Route path="/editor" component={PietEditor} />
                   <Route path="/runner" component={CodeRunner} />
                   <Route path="/gallery" component={Gallery} />

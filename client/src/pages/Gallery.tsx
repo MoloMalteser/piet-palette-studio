@@ -88,9 +88,51 @@ const Gallery = () => {
   };
 
   const loadExample = (example: PietExample) => {
-    // In a real app, this would load the actual Piet program
     console.log("Loading example:", example.id);
-    // You could navigate to the editor with the loaded example
+    
+    // Create a simple example grid based on the program type
+    const createExampleGrid = (type: string) => {
+      const size = 10;
+      const grid = Array(size).fill(null).map(() => Array(size).fill('white'));
+      
+      // Create different patterns for different examples
+      if (type === 'hello-world') {
+        // Simple pattern for Hello World
+        grid[1][1] = 'red';
+        grid[1][2] = 'yellow';
+        grid[2][1] = 'green';
+        grid[2][2] = 'cyan';
+      } else if (type === 'fibonacci') {
+        // Fibonacci pattern
+        grid[0][0] = 'red';
+        grid[1][1] = 'yellow';
+        grid[2][2] = 'green';
+        grid[3][3] = 'cyan';
+        grid[4][4] = 'blue';
+      } else if (type === 'calculator') {
+        // Calculator pattern  
+        for (let i = 0; i < 3; i++) {
+          grid[i][0] = 'red';
+          grid[i][1] = 'yellow';
+        }
+      }
+      
+      return grid;
+    };
+    
+    // Save example to localStorage for canvas to load
+    const exampleData = {
+      width: 10,
+      height: 10,
+      grid: createExampleGrid(example.id),
+      name: example.name
+    };
+    
+    localStorage.setItem('currentProgram', JSON.stringify(exampleData));
+    localStorage.setItem('loadedExample', example.id);
+    
+    // Navigate to main canvas
+    window.location.href = '/';
   };
 
   return (

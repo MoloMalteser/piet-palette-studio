@@ -18,11 +18,6 @@ const MobileBottomNav = () => {
       icon: Palette
     },
     {
-      href: "/runner",
-      label: "Run",
-      icon: Play
-    },
-    {
       href: "/gallery",
       label: "Gallery",
       icon: Image

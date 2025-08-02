@@ -1,135 +1,222 @@
 export const translations = {
   en: {
-    app: {
-      title: "Piet Programming Tool",
-      subtitle: "Create beautiful programs where code is art",
-      description: "Click cells to paint with Piet colors and create visual programs"
-    },
-    toolbar: {
-      new: "New",
-      save: "Save",
-      load: "Load", 
-      download: "Download",
-      undo: "Undo",
-      redo: "Redo",
-      settings: "Settings",
-      zoom_in: "Zoom In",
-      zoom_out: "Zoom Out",
-      zoom_fit: "Fit to Screen"
-    },
-    tools: {
-      brush: "Brush",
-      fill: "Fill",
-      eraser: "Eraser",
-      eyedropper: "Eyedropper",
-      select: "Select"
-    },
-    canvas: {
-      grid_size: "Grid Size",
-      brush_size: "Brush Size", 
-      show_grid: "Show Grid",
-      clear_canvas: "Clear Canvas"
-    },
-    colors: {
-      title: "Piet Colors",
-      selected: "Selected",
-      recent: "Recent Colors"
-    },
-    settings: {
-      title: "Settings",
-      language: "Language",
-      theme: "Theme",
-      light: "Light",
-      dark: "Dark",
-      auto: "Auto",
-      grid_options: "Grid Options",
-      export_options: "Export Options"
-    },
-    messages: {
-      new_canvas: "New canvas created! Start programming in Piet!",
-      program_saved: "Piet program saved successfully!",
-      program_loaded: "Piet program loaded successfully!",
-      program_downloaded: "Piet program downloaded!",
-      canvas_cleared: "Canvas cleared!",
-      no_undo: "Nothing to undo",
-      no_redo: "Nothing to redo",
-      fill_complete: "Area filled successfully",
-      color_picked: "Color picked from canvas"
-    },
-    examples: {
-      title: "Example Programs",
-      hello_world: "Hello World",
-      fibonacci: "Fibonacci Sequence", 
-      calculator: "Simple Calculator",
-      load_example: "Load Example"
-    }
+    // Navigation
+    'nav.canvas': 'Canvas',
+    'nav.gallery': 'Gallery',
+    'nav.docs': 'Docs',
+    
+    // Canvas
+    'canvas.title': 'Piet Canvas',
+    'canvas.color': 'Color',
+    'canvas.tool': 'Tool',
+    'canvas.size': 'Size',
+    'canvas.brush': 'Brush',
+    'canvas.eraser': 'Eraser',
+    'canvas.undo': 'Undo',
+    'canvas.redo': 'Redo',
+    'canvas.run': 'Run Program',
+    'canvas.download': 'Download PNG',
+    'canvas.new': 'New Canvas',
+    'canvas.canvasSize': 'Canvas Size (quadratic)',
+    'canvas.createNew': 'Create New Canvas',
+    
+    // Color Palette
+    'colors.red': 'Red',
+    'colors.yellow': 'Yellow', 
+    'colors.green': 'Green',
+    'colors.cyan': 'Cyan',
+    'colors.blue': 'Blue',
+    'colors.magenta': 'Magenta',
+    'colors.white': 'White',
+    'colors.black': 'Black',
+    'colors.lightRed': 'Light Red',
+    'colors.lightYellow': 'Light Yellow',
+    'colors.lightGreen': 'Light Green',
+    'colors.lightCyan': 'Light Cyan', 
+    'colors.lightBlue': 'Light Blue',
+    'colors.lightMagenta': 'Light Magenta',
+    'colors.darkRed': 'Dark Red',
+    'colors.darkYellow': 'Dark Yellow',
+    'colors.darkGreen': 'Dark Green',
+    'colors.darkCyan': 'Dark Cyan',
+    'colors.darkBlue': 'Dark Blue',
+    'colors.darkMagenta': 'Dark Magenta',
+    
+    // Runner
+    'runner.title': 'Piet Interpreter',
+    'runner.loadProgram': 'Load Program',
+    'runner.input': 'Input',
+    'runner.output': 'Output',
+    'runner.run': 'Run Program',
+    'runner.stop': 'Stop',
+    'runner.clear': 'Clear Output',
+    'runner.executionSteps': 'Execution Steps',
+    'runner.programLoaded': 'Program loaded from canvas',
+    'runner.testProgram': 'Test program loaded',
+    'runner.noProgram': 'No program loaded',
+    
+    // Gallery  
+    'gallery.title': 'Gallery',
+    'gallery.examples': 'Example Programs',
+    'gallery.myPrograms': 'My Programs',
+    'gallery.load': 'Load',
+    'gallery.loadToCanvas': 'Load to Canvas',
+    'gallery.delete': 'Delete',
+    'gallery.helloWorld': 'Hello World',
+    'gallery.fibonacci': 'Fibonacci',
+    'gallery.asciiArt': 'ASCII Art',
+    'gallery.calculator': 'Calculator',
+    
+    // Documentation
+    'docs.title': 'Piet Documentation',
+    'docs.subtitle': 'Learn visual programming with colors',
+    'docs.whatIsPiet': 'What is Piet?',
+    'docs.pietDescription': 'Piet is an esoteric programming language where programs are represented as abstract images made up of colored pixels. Programs execute based on color transitions as the program pointer moves through the image.',
+    'docs.colorPalette': 'Color Palette',
+    'docs.colorPaletteSubtitle': 'The 20 standard Piet colors',
+    'docs.lightColors': 'Light Colors',
+    'docs.normalColors': 'Normal Colors', 
+    'docs.darkColors': 'Dark Colors',
+    'docs.specialColors': 'Special Colors',
+    'docs.hueCommands': 'Hue Change Commands',
+    'docs.hueCommandsSubtitle': 'Commands triggered by hue transitions',
+    'docs.lightnessCommands': 'Lightness Change Commands',
+    'docs.lightnessCommandsSubtitle': 'Commands triggered by lightness transitions',
+    'docs.specialColorsTitle': 'Special Colors',
+    'docs.specialColorsSubtitle': 'White and black have special properties',
+    'docs.quickStart': 'Quick Start',
+    'docs.quickStartSubtitle': 'Basic steps to create your first Piet program',
+    'docs.step1': 'Create your canvas',
+    'docs.step1Desc': 'Start with a small grid (10×10 or 20×20)',
+    'docs.step2': 'Paint with purpose',
+    'docs.step2Desc': 'Each color transition creates a command',
+    'docs.step3': 'Test your program',
+    'docs.step3Desc': 'Use the green Run button to execute',
+    
+    // Welcome
+    'welcome.title': 'Welcome to Piet Studio',
+    'welcome.description': 'Visual programming made simple',
+    'welcome.getStarted': 'Get Started',
+    'welcome.skip': 'Skip Tutorial',
+    
+    // Common
+    'common.cancel': 'Cancel',
+    'common.save': 'Save',
+    'common.delete': 'Delete',
+    'common.edit': 'Edit',
+    'common.close': 'Close',
+    'common.back': 'Back',
+    'common.next': 'Next',
+    'common.language': 'Language',
   },
   de: {
-    app: {
-      title: "Piet Programmier-Tool",
-      subtitle: "Erstelle schöne Programme, bei denen Code Kunst ist",
-      description: "Klicke auf Zellen, um mit Piet-Farben zu malen und visuelle Programme zu erstellen"
-    },
-    toolbar: {
-      new: "Neu",
-      save: "Speichern",
-      load: "Laden",
-      download: "Herunterladen",
-      undo: "Rückgängig",
-      redo: "Wiederholen",
-      settings: "Einstellungen",
-      zoom_in: "Vergrößern",
-      zoom_out: "Verkleinern",
-      zoom_fit: "An Bildschirm anpassen"
-    },
-    tools: {
-      brush: "Pinsel",
-      fill: "Füllen",
-      eraser: "Radierer",
-      eyedropper: "Pipette",
-      select: "Auswählen"
-    },
-    canvas: {
-      grid_size: "Rastergröße",
-      brush_size: "Pinselgröße",
-      show_grid: "Raster anzeigen",
-      clear_canvas: "Leinwand löschen"
-    },
-    colors: {
-      title: "Piet-Farben",
-      selected: "Ausgewählt",
-      recent: "Zuletzt verwendet"
-    },
-    settings: {
-      title: "Einstellungen",
-      language: "Sprache",
-      theme: "Design",
-      light: "Hell",
-      dark: "Dunkel",
-      auto: "Automatisch",
-      grid_options: "Raster-Optionen",
-      export_options: "Export-Optionen"
-    },
-    messages: {
-      new_canvas: "Neue Leinwand erstellt! Beginne mit der Piet-Programmierung!",
-      program_saved: "Piet-Programm erfolgreich gespeichert!",
-      program_loaded: "Piet-Programm erfolgreich geladen!",
-      program_downloaded: "Piet-Programm heruntergeladen!",
-      canvas_cleared: "Leinwand gelöscht!",
-      no_undo: "Nichts rückgängig zu machen",
-      no_redo: "Nichts zu wiederholen",
-      fill_complete: "Bereich erfolgreich gefüllt",
-      color_picked: "Farbe von der Leinwand ausgewählt"
-    },
-    examples: {
-      title: "Beispielprogramme",
-      hello_world: "Hallo Welt",
-      fibonacci: "Fibonacci-Folge",
-      calculator: "Einfacher Rechner",
-      load_example: "Beispiel laden"
-    }
+    // Navigation
+    'nav.canvas': 'Canvas',
+    'nav.gallery': 'Galerie',
+    'nav.docs': 'Anleitung',
+    
+    // Canvas
+    'canvas.title': 'Piet Canvas',
+    'canvas.color': 'Farbe',
+    'canvas.tool': 'Werkzeug',
+    'canvas.size': 'Größe',
+    'canvas.brush': 'Pinsel',
+    'canvas.eraser': 'Radierer',
+    'canvas.undo': 'Rückgängig',
+    'canvas.redo': 'Wiederholen',
+    'canvas.run': 'Programm ausführen',
+    'canvas.download': 'PNG herunterladen',
+    'canvas.new': 'Neues Canvas',
+    'canvas.canvasSize': 'Canvas-Größe (quadratisch)',
+    'canvas.createNew': 'Neues Canvas erstellen',
+    
+    // Color Palette
+    'colors.red': 'Rot',
+    'colors.yellow': 'Gelb',
+    'colors.green': 'Grün',
+    'colors.cyan': 'Cyan',
+    'colors.blue': 'Blau',
+    'colors.magenta': 'Magenta',
+    'colors.white': 'Weiß',
+    'colors.black': 'Schwarz',
+    'colors.lightRed': 'Hellrot',
+    'colors.lightYellow': 'Hellgelb',
+    'colors.lightGreen': 'Hellgrün',
+    'colors.lightCyan': 'Hellcyan',
+    'colors.lightBlue': 'Hellblau',
+    'colors.lightMagenta': 'Hellmagenta',
+    'colors.darkRed': 'Dunkelrot',
+    'colors.darkYellow': 'Dunkelgelb',
+    'colors.darkGreen': 'Dunkelgrün',
+    'colors.darkCyan': 'Dunkelcyan',
+    'colors.darkBlue': 'Dunkelblau',
+    'colors.darkMagenta': 'Dunkelmagenta',
+    
+    // Runner
+    'runner.title': 'Piet Interpreter',
+    'runner.loadProgram': 'Programm laden',
+    'runner.input': 'Eingabe',
+    'runner.output': 'Ausgabe',
+    'runner.run': 'Programm ausführen',
+    'runner.stop': 'Stopp',
+    'runner.clear': 'Ausgabe leeren',
+    'runner.executionSteps': 'Ausführungsschritte',
+    'runner.programLoaded': 'Programm vom Canvas geladen',
+    'runner.testProgram': 'Testprogramm geladen',
+    'runner.noProgram': 'Kein Programm geladen',
+    
+    // Gallery
+    'gallery.title': 'Galerie',
+    'gallery.examples': 'Beispielprogramme',
+    'gallery.myPrograms': 'Meine Programme',
+    'gallery.load': 'Laden',
+    'gallery.loadToCanvas': 'Zum Canvas laden',
+    'gallery.delete': 'Löschen',
+    'gallery.helloWorld': 'Hallo Welt',
+    'gallery.fibonacci': 'Fibonacci',
+    'gallery.asciiArt': 'ASCII-Kunst',
+    'gallery.calculator': 'Rechner',
+    
+    // Documentation
+    'docs.title': 'Piet Anleitung',
+    'docs.subtitle': 'Lerne visuelles Programmieren mit Farben',
+    'docs.whatIsPiet': 'Was ist Piet?',
+    'docs.pietDescription': 'Piet ist eine esoterische Programmiersprache, bei der Programme als abstrakte Bilder aus farbigen Pixeln dargestellt werden. Programme werden basierend auf Farbübergängen ausgeführt, während sich der Programmzeiger durch das Bild bewegt.',
+    'docs.colorPalette': 'Farbpalette',
+    'docs.colorPaletteSubtitle': 'Die 20 Standard-Piet-Farben',
+    'docs.lightColors': 'Helle Farben',
+    'docs.normalColors': 'Normale Farben',
+    'docs.darkColors': 'Dunkle Farben',
+    'docs.specialColors': 'Spezialfarben',
+    'docs.hueCommands': 'Farbton-Befehle',
+    'docs.hueCommandsSubtitle': 'Befehle durch Farbton-Übergänge ausgelöst',
+    'docs.lightnessCommands': 'Helligkeit-Befehle',
+    'docs.lightnessCommandsSubtitle': 'Befehle durch Helligkeits-Übergänge ausgelöst',
+    'docs.specialColorsTitle': 'Spezialfarben',
+    'docs.specialColorsSubtitle': 'Weiß und Schwarz haben spezielle Eigenschaften',
+    'docs.quickStart': 'Schnellstart',
+    'docs.quickStartSubtitle': 'Grundlegende Schritte für dein erstes Piet-Programm',
+    'docs.step1': 'Canvas erstellen',
+    'docs.step1Desc': 'Beginne mit einem kleinen Raster (10×10 oder 20×20)',
+    'docs.step2': 'Gezielt malen',
+    'docs.step2Desc': 'Jeder Farbübergang erzeugt einen Befehl',
+    'docs.step3': 'Programm testen',
+    'docs.step3Desc': 'Verwende den grünen Run-Button zum Ausführen',
+    
+    // Welcome
+    'welcome.title': 'Willkommen bei Piet Studio',
+    'welcome.description': 'Visuelles Programmieren leicht gemacht',
+    'welcome.getStarted': 'Los geht\'s',
+    'welcome.skip': 'Tutorial überspringen',
+    
+    // Common
+    'common.cancel': 'Abbrechen',
+    'common.save': 'Speichern',
+    'common.delete': 'Löschen',
+    'common.edit': 'Bearbeiten',
+    'common.close': 'Schließen',
+    'common.back': 'Zurück',
+    'common.next': 'Weiter',
+    'common.language': 'Sprache',
   }
-} as const;
-
-export type Language = keyof typeof translations;
-export type TranslationKey = keyof typeof translations.en;
+};
