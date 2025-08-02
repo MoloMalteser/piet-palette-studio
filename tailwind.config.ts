@@ -88,41 +88,49 @@ export default {
 					background: 'hsl(var(--canvas-background))',
 					grid: 'hsl(var(--grid-line))'
 				}
-			},
-			boxShadow: {
-				'canvas': 'var(--canvas-shadow)'
-			},
-			transitionTimingFunction: {
-				'smooth': 'var(--transition-smooth)',
-				'spring': 'var(--transition-spring)'
-			},
-			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
-			},
-			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
 				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+				ios: {
+					surface1: 'hsl(var(--ios-surface-1))',
+					surface2: 'hsl(var(--ios-surface-2))',
+					surface3: 'hsl(var(--ios-surface-3))',
+					glass: 'hsl(var(--ios-glass))',
+					'glass-border': 'hsl(var(--ios-glass-border))'
 				}
 			},
+			boxShadow: {
+				'ios-1': 'var(--shadow-ios-1)',
+				'ios-2': 'var(--shadow-ios-2)',
+				'ios-3': 'var(--shadow-ios-3)',
+				'canvas': 'var(--shadow-canvas)',
+				'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)'
+			},
+			backdropBlur: {
+				'ios': '20px'
+			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'spring': 'spring 0.5s var(--spring)',
+				'fade-up': 'fadeUp 0.5s var(--ease-ios)',
+				'scale-in': 'scaleIn 0.3s var(--spring)',
+				'slide-up': 'slideUp 0.4s var(--ease-ios)'
+			},
+			keyframes: {
+				spring: {
+					'0%': { transform: 'scale(0.9)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				fadeUp: {
+					'0%': { transform: 'translateY(20px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				scaleIn: {
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				slideUp: {
+					'0%': { transform: 'translateY(100%)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				}
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

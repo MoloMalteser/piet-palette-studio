@@ -8,37 +8,45 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 20% 8%;
-    --foreground: 210 40% 98%;
+    /* iOS Light Theme */
+    --background: 248 250 252;
+    --foreground: 15 23 42;
 
-    --card: 220 20% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
 
-    --popover: 220 20% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 59 130 246;
+    --primary-foreground: 248 250 252;
 
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 241 245 249;
+    --secondary-foreground: 51 65 85;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
 
-    --accent: 262 83% 58%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 139 92 246;
+    --accent-foreground: 248 250 252;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 15%;
-    --ring: 142 76% 36%;
+    --border: 226 232 240;
+    --input: 241 245 249;
+    --ring: 59 130 246;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
-    /* Piet color palette */
+    /* iOS Design System */
+    --ios-surface-1: 255 255 255;
+    --ios-surface-2: 248 250 252;
+    --ios-surface-3: 241 245 249;
+    --ios-glass: 255 255 255 / 0.8;
+    --ios-glass-border: 255 255 255 / 0.3;
+    
+    /* Piet Colors (same for both themes) */
     --piet-red: 0 100% 50%;
     --piet-yellow: 60 100% 50%;
     --piet-green: 120 100% 50%;
@@ -48,7 +56,6 @@ All colors MUST be HSL.
     --piet-black: 0 0% 0%;
     --piet-white: 0 0% 100%;
     
-    /* Light variants */
     --piet-light-red: 0 100% 75%;
     --piet-light-yellow: 60 100% 75%;
     --piet-light-green: 120 100% 75%;
@@ -56,7 +63,6 @@ All colors MUST be HSL.
     --piet-light-blue: 240 100% 75%;
     --piet-light-magenta: 300 100% 75%;
     
-    /* Dark variants */
     --piet-dark-red: 0 100% 25%;
     --piet-dark-yellow: 60 100% 25%;
     --piet-dark-green: 120 100% 25%;
@@ -64,30 +70,64 @@ All colors MUST be HSL.
     --piet-dark-blue: 240 100% 25%;
     --piet-dark-magenta: 300 100% 25%;
 
-    /* Grid and canvas */
-    --canvas-background: 220 20% 12%;
-    --grid-line: 220 20% 25%;
-    --canvas-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+    /* Canvas */
+    --canvas-background: 255 255 255;
+    --grid-line: 226 232 240;
+    
+    /* iOS Shadows & Effects */
+    --shadow-ios-1: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-ios-2: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-ios-3: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-canvas: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     
     /* Animations */
-    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-ios: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
-    --sidebar-background: 0 0% 98%;
+  .dark {
+    /* iOS Dark Theme */
+    --background: 15 23 42;
+    --foreground: 248 250 252;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
 
-    --sidebar-primary: 240 5.9% 10%;
+    --popover: 30 41 59;
+    --popover-foreground: 248 250 252;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    --primary: 96 165 250;
+    --primary-foreground: 15 23 42;
 
-    --sidebar-accent: 240 4.8% 95.9%;
+    --secondary: 51 65 85;
+    --secondary-foreground: 226 232 240;
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
 
-    --sidebar-border: 220 13% 91%;
+    --accent: 167 139 250;
+    --accent-foreground: 15 23 42;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive: 248 113 113;
+    --destructive-foreground: 15 23 42;
+
+    --border: 51 65 85;
+    --input: 30 41 59;
+    --ring: 96 165 250;
+
+    --ios-surface-1: 30 41 59;
+    --ios-surface-2: 51 65 85;
+    --ios-surface-3: 71 85 105;
+    --ios-glass: 15 23 42 / 0.8;
+    --ios-glass-border: 148 163 184 / 0.2;
+
+    --canvas-background: 30 41 59;
+    --grid-line: 71 85 105;
+    
+    --shadow-ios-1: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    --shadow-ios-2: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-ios-3: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-canvas: 0 25px 50px -12px rgb(0 0 0 / 0.5);
   }
 
   .dark {
