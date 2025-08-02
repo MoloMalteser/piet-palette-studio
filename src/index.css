@@ -130,7 +130,7 @@ All colors MUST be HSL.
     --shadow-canvas: 0 25px 50px -12px rgb(0 0 0 / 0.5);
   }
 
-  .dark {
+  .darkos {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
