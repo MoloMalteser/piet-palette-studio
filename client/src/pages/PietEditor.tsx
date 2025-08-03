@@ -79,8 +79,11 @@ const PietEditor = () => {
       {/* Color Palette */}
       <div className="bg-card border border-border rounded-3xl p-4">
         <ColorPalette 
-          selectedColor={selectedColor} 
-          onColorSelect={setSelectedColor}
+          selectedColor={selectedColor.color} 
+          onColorSelect={(color) => {
+            const pietColor = PIET_COLORS.find(c => c.color === color);
+            if (pietColor) setSelectedColor(pietColor);
+          }}
         />
       </div>
 
