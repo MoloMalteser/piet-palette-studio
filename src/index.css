@@ -129,7 +129,7 @@ All colors MUST be HSL.
     --shadow-ios-3: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
     --shadow-canvas: 0 25px 50px -12px rgb(0 0 0 / 0.5);
   }
-
+}
 
 @layer base {
   * {
